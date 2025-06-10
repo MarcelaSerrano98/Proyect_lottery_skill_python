@@ -1,0 +1,22 @@
+[
+    {
+        "nombre": "boleto1",
+        "numeros": [1, 25, 30, 2, 7]
+    },
+    {   
+        "nombre": "boleto2",
+        "numeros": [10, 6, 35, 15, 1]
+    },
+    {
+        "nombre": "boleto3",
+        "numeros": [25, 12, 13, 5, 49]
+    },
+    {
+        "nombre": "boleto4",
+        "numeros": [12, 21, 7, 39, 20]
+    },
+    {
+        "nombre": "boleto5",
+        "numeros": [21, 3, 45, 12, 25]
+    }
+]

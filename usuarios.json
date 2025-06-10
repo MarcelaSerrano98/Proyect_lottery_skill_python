@@ -1,0 +1,30 @@
+[
+    {
+        "nombre": "Marcela",
+        "edad": "26",
+        "contrase\u00f1a": "2511",
+        "puntos": 0,
+        "vida": 3
+    },
+    {
+        "nombre": "Sebastian",
+        "edad": "22",
+        "contrase\u00f1a": "2511",
+        "puntos": 0,
+        "vida": 3
+    },
+    {
+        "nombre": "Adrian",
+        "edad": "26",
+        "contrase\u00f1a": "26",
+        "puntos": 0,
+        "vida": 3
+    },
+    {
+        "nombre": "Alejandra",
+        "edad": "20",
+        "contrase\u00f1a": "123",
+        "puntos": 0,
+        "vida": 3
+    }
+]
