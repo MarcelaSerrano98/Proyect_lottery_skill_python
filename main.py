@@ -122,13 +122,29 @@ def Jugar_numeros_ingresados(min : int, max : int):
     print(f"📌 Los numeros deben ser del {min} al {max}")
     temp= numeros_ingresados
     numeros=[]
-    for i in range(5):
-        numero= int(input("📝 Ingrese un numero: "))
-        numeros.append(numero)
+    
+    while True:
+        numeros.clear()
+        for i in range(5):
+            try:
+                numero= int(input(f"📝 Ingrese el numero {i+1}: "))
+                if numero < min or numero > max:
+                    print("❌ El numero debe ser del 1 al 50")
+                    print("Intenta nuevamente")
+                    break
+                else:
+                    numeros.append(numero)  
+            except ValueError:
+                print("❌ El numero debe ser un entero")
+                print("Intenta nuevamente")
+                break
+        if len(numeros) == 5:
+            break
     temp.append(numeros)
     escribirJson('numeros_ingresados.json',temp)
     print("✅ Numeros ingresados con exito")
     return numeros
+    
     
 
 
@@ -181,24 +197,33 @@ def jugar_con_boleto_personalizado(usuario):
         print("❌ No tienes boletos personalizados registrados.")
         return
 
-    print(f"\n🎟️ Boletos personalizados de {usuario['nombre']}:")
-    for nombre in boletos[usuario['nombre']]:
-        print(f" - {nombre}: {boletos[usuario['nombre']][nombre]}")
+    def pintar_boletos():
+        print(f"\n🎟️ Boletos personalizados de {usuario['nombre']}:")
+        for nombre in boletos[usuario['nombre']]:
+            print(f" - {nombre}: {boletos[usuario['nombre']][nombre]}")
 
-    nombre_boleto = input("\nEscribe el nombre del boleto que quieres usar: ")
+    while True:
+        pintar_boletos()
+        nombre_boleto = input("\nEscribe el nombre del boleto que quieres usar: ")
+        if nombre_boleto in boletos[usuario['nombre']]:
+            break
+        else:
+            print("❌ Ese boleto no existe.")
+            print("Intenta nuevamente")
+            continue
 
-    if nombre_boleto not in boletos[usuario['nombre']]:
-        print("❌ Ese boleto no existe.")
-        return
 
     boleto = boletos[usuario['nombre']][nombre_boleto]
-    numeros_sorteo = sorted(random.sample(range(1, 46), 5))
+    numeros_sorteo = (random.sample(range(1, 46), 5))
 
     print("\n🎰 Números sorteados:", numeros_sorteo)
-    print("🎟️ Tu boleto:", sorted(boleto))
+    print("🎟️ Tu boleto:", (boleto))
 
     aciertos = set(boleto) & set(numeros_sorteo)
-    print(f"✅ Aciertos ({len(aciertos)}):", sorted(aciertos))
+    if len(aciertos) == 0:
+        print(f"✅ Aciertos: ({len(aciertos)})")
+    else:
+        print(f"✅ Aciertos: ({len(aciertos)}) - Numeros en los que acertaste: {aciertos}")
 
     if len(aciertos) >= 3:
         print("🎉 ¡Felicidades! ¡Ganaste el premio mayor!")
@@ -288,6 +313,7 @@ def vidas(vida, modo_juego="", numeros_fijos=None, boleto_comprado=None):
         escribirJson('usuarios.json', usuarios)
         print(f"❌ Has perdido el juego\n❌ Perdiste tu acumulado de puntos: {puntos}")
         print("👋 Mejor suerte para la proxima")
+        validar = False
         return None
         
     elif vida >= 1 and vida <= 3:
@@ -295,48 +321,52 @@ def vidas(vida, modo_juego="", numeros_fijos=None, boleto_comprado=None):
         escribirJson('usuarios.json', usuarios)
         print(f"💖 Vidas: {usuario_actual['vida']}")
         print(f"💰 Puntos: {usuario_actual['puntos']}")
-        nuevo_juego = input("Desea jugar con los mismos numeros? (s/n)")
-        if nuevo_juego.lower() == "s":
-            if modo_juego == "manual":
-                numeros_persona = leerJson('numeros_ingresados.json')[-1]
-                numeros_maquina = jugar_numeros_automaticos()
-                print(f"🎮 Jugando con tus números anteriores: {numeros_persona}")
-                comparar_numeros(numeros_persona, numeros_maquina, vida, usuario_actual['puntos'], modo_juego)
-            elif modo_juego == "automatico":
-                print(f"🎮 Continuando con tus números: {numeros_fijos}")
-                numeros_maquina = jugar_numeros_automaticos()
-                comparar_numeros(numeros_fijos, numeros_maquina, vida, usuario_actual['puntos'], modo_juego, numeros_fijos)
-            elif modo_juego == "boletos":
-                print("📌En este modo tu mismo debes escoger el boleto que quieres jugar")
-                print("🔄️Puedes escoger el mismo boleto con el que jugaste anteriormente")
-                boleto_comprado = escoger_boletos()
-                if boleto_comprado is not None:
+        while True:
+            nuevo_juego = input("Desea jugar con los mismos numeros? (s/n)")
+            if nuevo_juego.lower() == "s":
+                if modo_juego == "manual":
+                    numeros_persona = leerJson('numeros_ingresados.json')[-1]
                     numeros_maquina = jugar_numeros_automaticos()
-                    comparar_numeros(boleto_comprado, numeros_maquina, vida, usuario_actual['puntos'], modo_juego, boleto_comprado)
-                else:
-                    print("❌ No se pudo seleccionar un boleto válido")
-        elif nuevo_juego.lower() == "n":
-            if modo_juego == "manual":
-                Jugar_numeros_ingresados(1,50)
-                numeros_maquina = jugar_numeros_automaticos()
-                comparar_numeros(numeros_ingresados[-1], numeros_maquina, vida, usuario_actual['puntos'], modo_juego)
-            elif modo_juego == "automatico":
-                print("\n🎮 Generando nuevos números para ti...")
-                numeros_persona = jugar_numeros_automaticos()
-                print(f"🎮 Tus nuevos números son: {numeros_persona}")
-                print("🎮 Generando nuevos números para la maquina...")
-                numeros_maquina = jugar_numeros_automaticos()
-                comparar_numeros(numeros_persona, numeros_maquina, vida, usuario_actual['puntos'], modo_juego, numeros_persona)
-            elif modo_juego == "boletos":
-                boleto_comprado = escoger_boletos()
-                if boleto_comprado is not None:
+                    print(f"🎮 Jugando con tus números anteriores: {numeros_persona}")
+                    comparar_numeros(numeros_persona, numeros_maquina, vida, usuario_actual['puntos'], modo_juego)
+                elif modo_juego == "automatico":
+                    print(f"🎮 Continuando con tus números: {numeros_fijos}")
                     numeros_maquina = jugar_numeros_automaticos()
-                    comparar_numeros(boleto_comprado, numeros_maquina, vida, usuario_actual['puntos'], modo_juego, boleto_comprado)
-                else:
-                    print("❌ No se pudo seleccionar un boleto válido")
-                    
-        else:
-            print("❌ Opción no válida. Por favor, elija 's' o 'n'")
+                    comparar_numeros(numeros_fijos, numeros_maquina, vida, usuario_actual['puntos'], modo_juego, numeros_fijos)
+                elif modo_juego == "boletos":
+                    print("📌En este modo tu mismo debes escoger el boleto que quieres jugar")
+                    print("🔄️Puedes escoger el mismo boleto con el que jugaste anteriormente")
+                    boleto_comprado = escoger_boletos()
+                    if boleto_comprado is not None:
+                        numeros_maquina = jugar_numeros_automaticos()
+                        comparar_numeros(boleto_comprado, numeros_maquina, vida, usuario_actual['puntos'], modo_juego, boleto_comprado)
+                    else:
+                        print("❌ No se pudo seleccionar un boleto válido")
+                break
+            elif nuevo_juego.lower() == "n":
+                if modo_juego == "manual":
+                    Jugar_numeros_ingresados(1,50)
+                    numeros_maquina = jugar_numeros_automaticos()
+                    comparar_numeros(numeros_ingresados[-1], numeros_maquina, vida, usuario_actual['puntos'], modo_juego)
+                elif modo_juego == "automatico":
+                    print("\n🎮 Generando nuevos números para ti...")
+                    numeros_persona = jugar_numeros_automaticos()
+                    print(f"🎮 Tus nuevos números son: {numeros_persona}")
+                    print("🎮 Generando nuevos números para la maquina...")
+                    numeros_maquina = jugar_numeros_automaticos()
+                    comparar_numeros(numeros_persona, numeros_maquina, vida, usuario_actual['puntos'], modo_juego, numeros_persona)
+                elif modo_juego == "boletos":
+                    boleto_comprado = escoger_boletos()
+                    if boleto_comprado is not None:
+                        numeros_maquina = jugar_numeros_automaticos()
+                        comparar_numeros(boleto_comprado, numeros_maquina, vida, usuario_actual['puntos'], modo_juego, boleto_comprado)
+                    else:
+                        print("❌ No se pudo seleccionar un boleto válido")
+                break
+
+            else:   
+                print("❌ Opción no válida. Por favor, elija 's' o 'n'")
+            
     else:
         pass
 
@@ -619,7 +649,14 @@ def menu_principal(usuario_actual):
                 if salir.lower() == "s":
                     print("👋 Gracias por jugar")
                     return
+                elif salir.lower() == "n":
+                    limpiarConsola()
+                    continue
                 else:
+                    print("❌ Opción no válida")
+                    print("📌 Las opciones válidas son: s, n")
+                    input("↩️ Presiona enter para continuar")
+                    limpiarConsola()
                     continue
             else:
                 print("❌ Opción no válida")
