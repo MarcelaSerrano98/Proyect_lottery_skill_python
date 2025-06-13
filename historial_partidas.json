@@ -334,5 +334,245 @@
         "vidas_restantes": 3,
         "resultado": "\u00a1GANADOR! Obtuvo caf\u00e9 gratis",
         "numero": 14
+    },
+    {
+        "fecha": "2025-06-13 11:10:46",
+        "usuario": "Marcela",
+        "modo_juego": "boletos",
+        "numeros_persona": [
+            21,
+            3,
+            45,
+            12,
+            25
+        ],
+        "numeros_maquina": [
+            28,
+            10,
+            40,
+            14,
+            15
+        ],
+        "aciertos": 0,
+        "puntos_acumulados": 0,
+        "vidas_restantes": 2,
+        "resultado": "Perdi\u00f3 una vida",
+        "numero": 15
+    },
+    {
+        "fecha": "2025-06-13 11:11:09",
+        "usuario": "Marcela",
+        "modo_juego": "boletos",
+        "numeros_persona": [
+            10,
+            6,
+            35,
+            15,
+            1
+        ],
+        "numeros_maquina": [
+            42,
+            37,
+            20,
+            25,
+            17
+        ],
+        "aciertos": 0,
+        "puntos_acumulados": 0,
+        "vidas_restantes": 1,
+        "resultado": "Perdi\u00f3 una vida",
+        "numero": 16
+    },
+    {
+        "fecha": "2025-06-13 11:11:17",
+        "usuario": "Marcela",
+        "modo_juego": "boletos",
+        "numeros_persona": [
+            1,
+            25,
+            30,
+            2,
+            7
+        ],
+        "numeros_maquina": [
+            19,
+            2,
+            23,
+            24,
+            43
+        ],
+        "aciertos": 1,
+        "puntos_acumulados": 1,
+        "vidas_restantes": 1,
+        "resultado": "Gan\u00f3 1 punto",
+        "numero": 17
+    },
+    {
+        "fecha": "2025-06-13 11:11:20",
+        "usuario": "Marcela",
+        "modo_juego": "boletos",
+        "numeros_persona": [
+            10,
+            6,
+            35,
+            15,
+            1
+        ],
+        "numeros_maquina": [
+            20,
+            6,
+            4,
+            3,
+            47
+        ],
+        "aciertos": 1,
+        "puntos_acumulados": 2,
+        "vidas_restantes": 1,
+        "resultado": "Gan\u00f3 1 punto",
+        "numero": 18
+    },
+    {
+        "fecha": "2025-06-13 11:11:23",
+        "usuario": "Marcela",
+        "modo_juego": "boletos",
+        "numeros_persona": [
+            21,
+            3,
+            45,
+            12,
+            25
+        ],
+        "numeros_maquina": [
+            37,
+            5,
+            49,
+            32,
+            3
+        ],
+        "aciertos": 1,
+        "puntos_acumulados": 3,
+        "vidas_restantes": 1,
+        "resultado": "Gan\u00f3 1 punto",
+        "numero": 19
+    },
+    {
+        "fecha": "2025-06-13 11:11:27",
+        "usuario": "Marcela",
+        "modo_juego": "boletos",
+        "numeros_persona": [
+            12,
+            21,
+            7,
+            39,
+            20
+        ],
+        "numeros_maquina": [
+            34,
+            30,
+            20,
+            5,
+            27
+        ],
+        "aciertos": 1,
+        "puntos_acumulados": 4,
+        "vidas_restantes": 1,
+        "resultado": "Gan\u00f3 1 punto",
+        "numero": 20
+    },
+    {
+        "fecha": "2025-06-13 11:11:30",
+        "usuario": "Marcela",
+        "modo_juego": "boletos",
+        "numeros_persona": [
+            1,
+            25,
+            30,
+            2,
+            7
+        ],
+        "numeros_maquina": [
+            24,
+            41,
+            14,
+            12,
+            7
+        ],
+        "aciertos": 1,
+        "puntos_acumulados": 0,
+        "vidas_restantes": 2,
+        "resultado": "Gan\u00f3 1 punto",
+        "numero": 21
+    },
+    {
+        "fecha": "2025-06-13 11:11:51",
+        "usuario": "Marcela",
+        "modo_juego": "boletos",
+        "numeros_persona": [
+            10,
+            6,
+            35,
+            15,
+            1
+        ],
+        "numeros_maquina": [
+            15,
+            37,
+            3,
+            33,
+            36
+        ],
+        "aciertos": 1,
+        "puntos_acumulados": 1,
+        "vidas_restantes": 2,
+        "resultado": "Gan\u00f3 1 punto",
+        "numero": 22
+    },
+    {
+        "fecha": "2025-06-13 11:11:55",
+        "usuario": "Marcela",
+        "modo_juego": "boletos",
+        "numeros_persona": [
+            21,
+            3,
+            45,
+            12,
+            25
+        ],
+        "numeros_maquina": [
+            29,
+            43,
+            16,
+            40,
+            14
+        ],
+        "aciertos": 0,
+        "puntos_acumulados": 1,
+        "vidas_restantes": 1,
+        "resultado": "Perdi\u00f3 una vida",
+        "numero": 23
+    },
+    {
+        "fecha": "2025-06-13 11:11:57",
+        "usuario": "Marcela",
+        "modo_juego": "boletos",
+        "numeros_persona": [
+            10,
+            6,
+            35,
+            15,
+            1
+        ],
+        "numeros_maquina": [
+            18,
+            44,
+            21,
+            14,
+            2
+        ],
+        "aciertos": 0,
+        "puntos_acumulados": 1,
+        "vidas_restantes": 0,
+        "resultado": "Perdi\u00f3 una vida",
+        "numero": 24
     }
 ]
