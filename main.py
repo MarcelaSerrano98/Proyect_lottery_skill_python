@@ -129,11 +129,16 @@ def Jugar_numeros_ingresados(min : int, max : int):
             try:
                 numero= int(input(f"📝 Ingrese el numero {i+1}: "))
                 if numero < min or numero > max:
-                    print("❌ El numero debe ser del 1 al 50")
-                    print("Intenta nuevamente")
+                    print("❌ El número debe estar entre 1 y 50")
+                    print("🔁 Intenta nuevamente")
                     break
-                else:
-                    numeros.append(numero)  
+
+                if numero in numeros:
+                    print("❌ El número ya fue ingresado, no puedes repetirlo")
+                    print("🔁 Intenta con otro número")
+                    break
+
+                numeros.append(numero)  
             except ValueError:
                 print("❌ El numero debe ser un entero")
                 print("Intenta nuevamente")

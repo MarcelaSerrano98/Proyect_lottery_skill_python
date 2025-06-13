@@ -310,5 +310,29 @@
         "vidas_restantes": 0,
         "resultado": "Perdi\u00f3 una vida",
         "numero": 13
+    },
+    {
+        "fecha": "2025-06-13 11:04:25",
+        "usuario": "Marcela",
+        "modo_juego": "manual",
+        "numeros_persona": [
+            25,
+            25,
+            25,
+            25,
+            25
+        ],
+        "numeros_maquina": [
+            30,
+            17,
+            31,
+            23,
+            25
+        ],
+        "aciertos": 5,
+        "puntos_acumulados": 0,
+        "vidas_restantes": 3,
+        "resultado": "\u00a1GANADOR! Obtuvo caf\u00e9 gratis",
+        "numero": 14
     }
 ]
